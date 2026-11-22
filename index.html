@@ -63,7 +63,7 @@ button {
 <button onclick="add('7')">7</button>
 <button onclick="add('8')">8</button>
 <button onclick="add('9')">9</button>
-<button class="operator" onclick="add('x')">×</button>
+<button class="operator" onclick="add('x')">x</button>
 <button onclick="add('4')">4</button>
 <button onclick="add('5')">5</button>
 <button onclick="add('6')">6</button>
@@ -102,7 +102,7 @@ function calculate(){
   )();
 
   if(!Number.isFinite(result)) throw Error();
-
+   
   display.value=String(result);
  } catch {
   display.value="Error";
