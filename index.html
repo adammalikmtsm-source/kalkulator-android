@@ -91,7 +91,7 @@ function deleteLast(){
 function calculate(){
  try {
   let expression = display.value
-    .replace(/×/g, '*')
+    .replace(/x/g, '*')
     .replace(/÷/g, '/')
 
   if(!/^[0-9+\-*\/%.() ]+$/.test(expression))
