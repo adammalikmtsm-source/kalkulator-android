@@ -1,0 +1,9 @@
+{
+  "name": "Kalkulator Android",
+  "short_name": "Kalkulator",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#151515",
+  "theme_color": "#151515",
+  "orientation": "portrait"
+}
