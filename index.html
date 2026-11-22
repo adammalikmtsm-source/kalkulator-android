@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Android</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #151515;
+  font-family: Arial, sans-serif;
+}
+.calculator {
+  width: 310px;
+  padding: 20px;
+  border-radius: 22px;
+  background: #252525;
+}
+#display {
+  width: 100%;
+  height: 75px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #111;
+  color: white;
+  font-size: 30px;
+  text-align: right;
+  padding: 12px;
+}
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+button {
+  height: 60px;
+  border: none;
+  border-radius: 12px;
+  background: #444;
+  color: white;
+  font-size: 22px;
+}
+.operator { background: #ff9500; }
+.clear { background: #d93636; }
+.equal { background: #219653; }
+</style>
+</head>
+<body>
+<div class="calculator">
+<input id="display" value="0" readonly>
+<div class="buttons">
+<button class="clear" onclick="clearDisplay()">C</button>
+<button onclick="deleteLast()">DEL</button>
+<button onclick="add('%')">%</button>
+<button class="operator" onclick="add('/')">÷</button>
+<button onclick="add('7')">7</button>
+<button onclick="add('8')">8</button>
+<button onclick="add('9')">9</button>
+<button class="operator" onclick="add('*')">×</button>
+<button onclick="add('4')">4</button>
+<button onclick="add('5')">5</button>
+<button onclick="add('6')">6</button>
+<button class="operator" onclick="add('-')">−</button>
+<button onclick="add('1')">1</button>
+<button onclick="add('2')">2</button>
+<button onclick="add('3')">3</button>
+<button class="operator" onclick="add('+')">+</button>
+<button onclick="add('0')">0</button>
+<button onclick="add('.')">.</button>
+<button class="equal" style="grid-column:span 2" onclick="calculate()">=</button>
+</div>
+</div>
+<script>
+const display = document.getElementById("display");
+function add(v) {
+ if(display.value==="Error") display.value="";
+ if(display.value==="0") display.value="";
+ display.value+=v;
+}
+function clearDisplay(){display.value="0";}
+function deleteLast(){
+ display.value=display.value.slice(0,-1)||"0";
+}
+function calculate(){
+ try {
+  if(!/^[0-9+\-*/%.() ]+$/.test(display.value))
+   throw Error();
+  const result=Function('"use strict";return ('+display.value+')')();
+  if(!Number.isFinite(result)) throw Error();
+  display.value=String(result);
+ } catch {display.value="Error";}
+}
+</script>
+</body>
+</html>
