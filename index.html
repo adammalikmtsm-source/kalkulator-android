@@ -94,7 +94,7 @@ function calculate(){
     .replace(/×/g, '*')
     .replace(/÷/g, '/');
 
-  if(!/^[0-9+\-*/%.() ]+$/.test(expression))
+  if(!/^[0-9+\-*\/%.() ]+$/.test(expression))
     throw Error();
 
   const result = Function(
